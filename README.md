@@ -11,7 +11,6 @@ The Force.com IDE is not officially supported under Fedora, CentOS, or RHEL.   A
  
 If you have already have docker working you can start eclipse as easily as:
 
- 
 
 mkdir ~/workspace
 xhost local:root
@@ -20,11 +19,6 @@ sudo docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/ do
 
 The first time you run this command it will download the image.
  
-
-You can now follow the instructions at:
-
-Force.com IDE Installation - developer.force.com
-https://developer.salesforce.com/page/Force.com_IDE
 
 If you do not have docker installed read on.
 

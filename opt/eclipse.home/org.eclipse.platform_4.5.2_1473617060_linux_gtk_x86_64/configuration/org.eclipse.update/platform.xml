@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config transient="false" shared_ur="file:configuration/org.eclipse.update/platform.xml" date="1460724829960" version="3.0">
+	<site enabled="true" updateable="true" policy="USER-EXCLUDE" url="file:/workspace/.eclipse/org.eclipse.platform_4.5.2_1473617060_linux_gtk_x86_64/">
+		<feature id="com.salesforce.ide.feature" plugin-identifier="com.salesforce.ide.branding" url="features/com.salesforce.ide.feature_36.0.0.201601221512/" version="36.0.0.201601221512">
+		</feature>
+		<feature id="com.salesforce.ide.debugger.feature" url="features/com.salesforce.ide.debugger.feature_36.0.0.201601221512/" version="36.0.0.201601221512">
+		</feature>
+	</site>
+</config>
