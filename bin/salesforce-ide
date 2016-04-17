@@ -1,5 +1,5 @@
 #!/bin/bash
 xhost local:root
 [ -d "$HOME/workspace" ] || mkdir "$HOME/workspace"
-exec sudo docker run -i --net=host --rm -e DISPLAY -v "$HOME/workspace/:/workspace/" docbill/docker-force "$@"
+exec docker run -i --net=host --rm -e DISPLAY="$DISPLAY" -v "$HOME/workspace/:/workspace/:z" docbill/docker-force "$@"
 

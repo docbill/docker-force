@@ -14,11 +14,12 @@ If you have already have docker working you can start eclipse as easily as:
 
 mkdir ~/workspace
 xhost local:root
-sudo docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/ docker-force
+docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/:z docker-force
 
 
 The first time you run this command it will download the image.
  
+If the :z flag is not recognized try the same commands without it.
 
 If you do not have docker installed read on.
 
