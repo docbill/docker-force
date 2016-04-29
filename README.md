@@ -1,4 +1,4 @@
-# docker-force
+# docbill/docker-force
 A docker container to run the Force.com IDE in
 
 ## Overview
@@ -8,19 +8,28 @@ The Force.com IDE is not officially supported under Fedora, CentOS, or RHEL.   A
  
 ## Quick Start
 
- 
 If you have already have docker working you can start eclipse as easily as:
 
+	[ -d ~/workspace ] || mkdir ~/workspace
+	xhost local:root
+	docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/:z docbill/docker-force
 
-mkdir ~/workspace
-xhost local:root
-docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/:z docker-force
+For windows this was a bit more complicated.  I had to make sure Xwin (from
+cygwin) was started with the -listen tcp option, and that security was 
+disabled.  Once that was done the following command worked:
+
+	docker run -i --rm -e DISPLAY=172.31.253.119:0 -v /d/cygwin64/home/docbi/workspace/:/workspace/:z docbill/docker-force
+
+Where my ip address is 172.31.253.119, and the folder I wanted the workspace in
+was D:\cygwin64\home\docbi\workspace\
 
 
 The first time you run this command it will download the image.
- 
-If the :z flag is not recognized try the same commands without it.
 
+If the :z flag is not recognized try the same command without that flag. 
+
+Project upgrades do not always work.
+ 
 If you do not have docker installed read on.
 
  
