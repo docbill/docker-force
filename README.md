@@ -8,13 +8,13 @@ The Force.com IDE is not officially supported under Fedora, CentOS, or RHEL.   A
  
 ## Quick Start
 
-If you have already have docker working you can start eclipse as easily as:
+1. If you have already have docker working you can start eclipse as easily as:
 
 	[ -d ~/workspace ] || mkdir ~/workspace
 	xhost local:root
 	docker run -i --net=host --rm -e DISPLAY -v $HOME/workspace/:/workspace/:z docbill/docker-force
 
-For windows this was a bit more complicated.  I had to make sure Xwin (from
+2. For windows this was a bit more complicated.  I had to make sure Xwin (from
 cygwin) was started with the -listen tcp option, and that security was 
 disabled.  Once that was done the following command worked:
 
@@ -23,10 +23,18 @@ disabled.  Once that was done the following command worked:
 Where my ip address is 172.31.253.119, and the folder I wanted the workspace in
 was D:\cygwin64\home\docbi\workspace\
 
+3. If you want to do something more advance such as granting eclipse access to
+the firefox browser on your desktop you'll need to do something more
+complicated such as:
 
-The first time you run this command it will download the image.
+	xhost local:root
+	[ -n "$WORKSPACE" ] || WORKSPACE="$HOME/workspace"
+	[ -d "$WORKSPACE" ] || mkdir "$WORKSPACE"
+	docker run -i --net=host --rm --name docker-force -e DISPLAY -v /var/lib/sss:/var/lib/sss:ro -v "$HOME:$HOME" -v "$WORKSPACE/.eclipse:$HOME/.eclipse" -v /tmp:/tmp:z -v "$WORKSPACE:/workspace/:z" docbill/fedora-eclipse "$@"
 
-If the :z flag is not recognized try the same command without that flag. 
+
+
+The first time you run the docker command it will download the image.
 
 Project upgrades do not always work.
  

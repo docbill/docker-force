@@ -1,5 +1,7 @@
 #!/bin/bash
 xhost local:root
-[ -d "$HOME/workspace" ] || mkdir "$HOME/workspace"
-exec docker run -i --net=host --rm -e DISPLAY="$DISPLAY" -v "$HOME/workspace/:/workspace/:z" docbill/docker-force "$@"
+[ -n "$WORKSPACE" ] || WORKSPACE="$HOME/workspace"
+[ -d "$WORKSPACE" ] || mkdir "$WORKSPACE"
+
+exec docker run -i --net=host --rm --name docker-force -e DISPLAY -v /var/lib/sss:/var/lib/sss:ro -v /tmp:/tmp:z -v "$WORKSPACE:$HOME:z" -v "$WORKSPACE:/workspace/:z" docker-force "$@"
 
